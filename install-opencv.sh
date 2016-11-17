@@ -48,6 +48,11 @@ mv opencv_contrib-3.1.0/ OpenCV_contrib
 rm -rf 3.1.0.zip 
 
 cd OpenCV
+echo "find_package(HDF5)" >> modules/python/common.cmake
+echo "include_directories(${HDF5_INCLUDE_DIRS})" >> modules/python/common.cmake
+
+#sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev
+
 mkdir build
 cd build
 cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON -DWITH_OPENGL=ON -DWITH_QT=ON -DBUILD_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=../../OpenCV_contrib/modules ..
