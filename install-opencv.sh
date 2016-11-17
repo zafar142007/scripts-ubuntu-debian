@@ -27,7 +27,7 @@ sudo apt-get install -y libtbb-dev libeigen3-dev
 sudo apt-get install -y python-dev python-tk python-numpy python3-dev python3-tk python3-numpy
 
 # Java:
-sudo apt-get install -y ant default-jdk
+#sudo apt-get install -y ant default-jdk
 
 # Documentation:
 sudo apt-get install -y doxygen
@@ -41,10 +41,16 @@ wget https://github.com/opencv/opencv/archive/3.1.0.zip
 unzip 3.1.0.zip
 rm 3.1.0.zip
 mv opencv-3.1.0 OpenCV
+
+wget https://github.com/opencv/opencv_contrib/archive/3.1.0.zip
+unzip 3.1.0.zip
+mv opencv_contrib-3.1.0/ OpenCV_contrib
+rm -rf 3.1.0.zip 
+
 cd OpenCV
 mkdir build
 cd build
-cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON -DWITH_OPENGL=ON -DWITH_QT=ON -DBUILD_EXAMPLES=ON ..
+cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON -DWITH_OPENGL=ON -DWITH_QT=ON -DBUILD_EXAMPLES=ON -DOPENCV_EXTRA_MODULES_PATH=../../OpenCV_contrib/modules ..
 make -j4
 sudo make install
 sudo ldconfig
