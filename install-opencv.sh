@@ -48,10 +48,10 @@ mv opencv_contrib-3.1.0/ OpenCV_contrib
 rm -rf 3.1.0.zip 
 
 cd OpenCV
+#hdf5 file not found bugfix
 echo "find_package(HDF5)" >> modules/python/common.cmake
 echo "include_directories(${HDF5_INCLUDE_DIRS})" >> modules/python/common.cmake
-
-#sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev
+sudo apt-get install libhdf5-serial-dev hdf5-tools
 
 mkdir build
 cd build
